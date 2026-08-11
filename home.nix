@@ -10,7 +10,31 @@
     ./modules/cli.nix
   ];
 
-  # This value determines the Home Manager release that your configuration is
+  programs.zsh = {
+    enable = true;
+
+    dotDir = ".config/zsh";
+
+    enableCompletion = true;
+
+    plugins = [
+      {
+        name = "zsh-autosuggestions";
+        src = pkgs.zsh-autosuggestions;
+      }
+      {
+        name = "fast-syntax-highlighting";
+        src = pkgs.fetchFromGitHub {
+          owner = "zdharma-continuum";
+          repo = "fast-syntax-highlighting";
+          rev = "v1.56";
+          hash = "sha256-caVMOdDJbAwo8dvKNgwwidmxOVst/YDda7lNx2GvOjY=";
+        };
+      }
+    ];
+  };
+
+# This value determines the Home Manager release that your configuration is
   # compatible with. This helps avoid breakage when a new Home Manager release
   # introduces backwards incompatible changes.
   #
@@ -56,6 +80,11 @@
     #   org.gradle.console=verbose
     #   org.gradle.daemon.idletimeout=3600000
     # '';
+    ".config/zsh/.zshrc".source = ./dotfiles/zsh/.zshrc;
+    ".config/zsh/plugins.zsh".source = ./dotfiles/zsh/plugins.zsh;
+    ".config/zsh/aliases.zsh".source = ./dotfiles/zsh/aliases.zsh;
+    ".config/zsh/prompt.zsh".source = ./dotfiles/zsh/prompt.zsh;
+    ".config/zsh/keybinds.zsh".source = ./dotfiles/zsh/keybinds.zsh;
   };
 
   # Home Manager can also manage your environment variables through

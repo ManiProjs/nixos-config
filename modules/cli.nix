@@ -25,6 +25,7 @@
     curl
     unzip
     zip
+    starship
   ];
 
   programs.direnv = {
