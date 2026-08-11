@@ -8,34 +8,7 @@
 
   imports = [
     ./modules/cli.nix
-    inputs.caelestia-shell.homeManagerModules.default
   ];
-
-  programs.caelestia = {
-    enable = true;
-    cli.enable = true;
-
-    systemd.enable = false;
-
-    settings = {
-        services = {
-          weatherLocation = "Tehran";
-          
-          useFahrenheit = false;
-          useTwelveHourClock = false;
-
-          audioIncrement = 5;
-          brightnessIncrement = 5;
-          
-          smartScheme = true;
-          showLyrics = true;
-        };
-
-        paths = {
-          wallpaperDir = "~/Pictures/Wallpapers";
-        };
-      };
-  };
 
   # This value determines the Home Manager release that your configuration is
   # compatible with. This helps avoid breakage when a new Home Manager release

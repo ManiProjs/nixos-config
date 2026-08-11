@@ -2,18 +2,13 @@
   description = "Mani's NixOS configuration";
 
   inputs = {
-    nixpkgs.url = "github:nixos/nixpkgs/nixos-26.05";
-    home-manager.url = "github:nix-community/home-manager/release-26.05";
+    nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
+    home-manager.url = "github:nix-community/home-manager";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
-
-    caelestia-shell = {
-      url = "github:caelestia-dots/shell";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
   };
 
   outputs =
-    inputs@{ self, nixpkgs, home-manager, caelestia-shell, ... }:
+    inputs@{ self, nixpkgs, home-manager, ... }:
     {
       nixosConfigurations = {
         nixos = nixpkgs.lib.nixosSystem {
